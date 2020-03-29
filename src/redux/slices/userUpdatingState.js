@@ -4,6 +4,7 @@ import get from 'lodash/get';
 import routes from '../../routes';
 import { actions as userActions } from './user';
 import { actions as errorMessageActions } from './errorMessage';
+import { getUserEntryPoint } from '../../utils';
 
 const userUpdatingState = createSlice({
   name: 'userUpdatingState',
@@ -36,6 +37,7 @@ const refreshUser = (data, resetFn, redirectFn) => async (dispatch) => {
   try {
     const response = await axios.put(routes.updateUserPath(), data);
     const user = get(response, 'data.response');
+    const entryPoint = getUserEntryPoint(user);
 
     dispatch(userActions.updateUser({ user }));
 
@@ -43,7 +45,7 @@ const refreshUser = (data, resetFn, redirectFn) => async (dispatch) => {
 
     resetFn();
 
-    redirectFn();
+    redirectFn(entryPoint);
   } catch (error) {
     dispatch(updateUserFailure());
 

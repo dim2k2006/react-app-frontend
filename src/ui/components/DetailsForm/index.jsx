@@ -6,7 +6,12 @@ import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import connect from '../../../connect';
 import i18n from '../../../i18n';
-import { required, email, composedFieldValidation } from '../../../utils';
+import {
+  required,
+  email,
+  composedFieldValidation,
+  redirect,
+} from '../../../utils';
 import FormInput from '../FormInput';
 import FormCheckbox from '../FormCheckbox';
 import './index.css';
@@ -18,7 +23,7 @@ const DetailsForm = ({ refreshUser }) => {
   const userUpdatingState = useSelector(getSelector('userUpdatingState'));
   const userId = useSelector(getSelector('userId'));
   const history = useHistory();
-  const redirect = () => history.replace('/terms');
+  const redirectFn = redirect(history);
 
   return (
     <div className="DetailsForm">
@@ -34,7 +39,7 @@ const DetailsForm = ({ refreshUser }) => {
           acceptMarketing: false,
         }}
         onSubmit={(values, { resetForm }) => {
-          refreshUser(values, resetForm, redirect);
+          refreshUser(values, resetForm, redirectFn);
         }}
       >
         <Form>
