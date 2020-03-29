@@ -6,6 +6,7 @@ i18next.init({
     en: {
       translation: {
         loginForm: {
+          title: 'Authenticate',
           nameFieldLabel: 'Username/Email',
           passwordFieldLabel: 'Password',
           submitButtonText: 'Submit',

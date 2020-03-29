@@ -18,6 +18,10 @@ const LoginForm = ({ authenticateUser }) => {
 
   return (
     <div className="LoginForm">
+      <h3 className="text-center mb-4">
+        {i18n.t('loginForm.title')}
+      </h3>
+
       {userAuthenticatingState.isFailed() && (
         <div className="alert alert-danger" role="alert">
           {i18n.t('loginForm.invalidCredentials')}
