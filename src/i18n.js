@@ -46,6 +46,7 @@ i18next.init({
         serverErrors: {
           authenticateUser: 'Something went wrong during authenticating. Please try again.',
           updateUser: 'Something went wrong during updating. Please try again.',
+          terminateUser: 'Something went wrong during logging out. Please try again.',
         },
       },
     },

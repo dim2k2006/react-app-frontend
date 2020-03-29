@@ -2,6 +2,7 @@ import { combineReducers } from '@reduxjs/toolkit';
 
 import userAuthenticatingState, { actions as userAuthenticatingStateActions, getUserAuthenticatingState } from './userAuthenticatingState';
 import userUpdatingState, { actions as userUpdatingStateActions, getUserUpdatingState } from './userUpdatingState';
+import userTerminatingState, { actions as userTerminatingStateActions } from './userTerminatingState';
 import user, {
   actions as userActions,
   getUserId,
@@ -12,6 +13,7 @@ import errorMessage, { actions as errorMessageActions, getErrorMessage } from '.
 export default combineReducers({
   userAuthenticatingState,
   userUpdatingState,
+  userTerminatingState,
   user,
   errorMessage,
 });
@@ -19,6 +21,7 @@ export default combineReducers({
 const actions = {
   ...userAuthenticatingStateActions,
   ...userUpdatingStateActions,
+  ...userTerminatingStateActions,
   ...userActions,
   ...errorMessageActions,
 };
