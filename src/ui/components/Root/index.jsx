@@ -7,6 +7,7 @@ import {
   Route,
 } from 'react-router-dom';
 import Login from '../../pages/Login';
+import Profile from '../../pages/Profile';
 
 const Root = ({ store }) => (
   <Provider store={store}>
@@ -14,6 +15,10 @@ const Root = ({ store }) => (
       <Switch>
         <Route exact path="/">
           <Login />
+        </Route>
+
+        <Route path="/profile">
+          <Profile />
         </Route>
       </Switch>
     </Router>
