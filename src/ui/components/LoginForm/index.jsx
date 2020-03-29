@@ -18,6 +18,12 @@ const LoginForm = ({ authenticateUser }) => {
 
   return (
     <div className="LoginForm">
+      {userAuthenticatingState.isFailed() && (
+        <div className="alert alert-danger" role="alert">
+          {i18n.t('loginForm.invalidCredentials')}
+        </div>
+      )}
+
       <Formik
         initialValues={{ username: '', password: '' }}
         onSubmit={(values, { resetForm }) => {
