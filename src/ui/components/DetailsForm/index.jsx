@@ -14,7 +14,7 @@ import { getSelector } from '../../../redux/slices';
 
 const validateEmail = (value) => composedFieldValidation(value, [required, email]);
 
-const DetailsForm = ({ updateUser }) => {
+const DetailsForm = ({ refreshUser }) => {
   const userUpdatingState = useSelector(getSelector('userUpdatingState'));
   const userId = useSelector(getSelector('userId'));
   const history = useHistory();
@@ -34,7 +34,7 @@ const DetailsForm = ({ updateUser }) => {
           acceptMarketing: false,
         }}
         onSubmit={(values, { resetForm }) => {
-          updateUser(values, resetForm, redirect);
+          refreshUser(values, resetForm, redirect);
         }}
       >
         <Form>
@@ -145,7 +145,7 @@ const DetailsForm = ({ updateUser }) => {
 };
 
 DetailsForm.propTypes = {
-  updateUser: PropTypes.func.isRequired,
+  refreshUser: PropTypes.func.isRequired,
 };
 
 export default connect()(DetailsForm);

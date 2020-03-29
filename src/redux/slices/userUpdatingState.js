@@ -30,7 +30,7 @@ const {
   updateUserFailure,
 } = userUpdatingState.actions;
 
-const updateUser = (data, resetFn, redirectFn) => async (dispatch) => {
+const refreshUser = (data, resetFn, redirectFn) => async (dispatch) => {
   dispatch(updateUserRequest());
 
   try {
@@ -51,7 +51,7 @@ const updateUser = (data, resetFn, redirectFn) => async (dispatch) => {
   }
 };
 
-const actions = { ...userUpdatingState.actions, updateUser };
+const actions = { ...userUpdatingState.actions, refreshUser };
 
 export { actions };
 
