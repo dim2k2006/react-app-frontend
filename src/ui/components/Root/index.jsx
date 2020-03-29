@@ -9,6 +9,7 @@ import Login from '../../pages/Login';
 import Details from '../../pages/Details';
 import Terms from '../../pages/Terms';
 import Welcome from '../../pages/Welcome';
+import Home from '../../pages/Home';
 
 const Root = () => (
   <Router>
@@ -27,6 +28,10 @@ const Root = () => (
 
       <PrivateRoute path="/welcome">
         <Welcome />
+      </PrivateRoute>
+
+      <PrivateRoute path="/">
+        <Home />
       </PrivateRoute>
     </Switch>
   </Router>

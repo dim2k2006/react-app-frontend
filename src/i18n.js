@@ -33,6 +33,11 @@ i18next.init({
           submitButtonText: 'continue',
         },
 
+        intro: {
+          title: 'This is the app home screen',
+          gratitude: 'Thanks for reviewing this code 😽',
+        },
+
         validations: {
           required: 'Required',
           email: 'Invalid email',
