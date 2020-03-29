@@ -19,6 +19,7 @@ const TermsForm = ({ refreshUser }) => {
       <Formik
         initialValues={{
           id: userId,
+          acceptTerms: true,
           showTermsAndCondition: false,
         }}
         onSubmit={(values, { resetForm }) => {
