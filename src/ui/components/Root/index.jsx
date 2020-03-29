@@ -13,7 +13,7 @@ import Welcome from '../../pages/Welcome';
 const Root = () => (
   <Router>
     <Switch>
-      <Route exact path="/">
+      <Route exact path="/login">
         <Login />
       </Route>
 
