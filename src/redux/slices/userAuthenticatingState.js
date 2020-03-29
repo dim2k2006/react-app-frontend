@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import get from 'lodash/get';
 import routes from '../../routes';
-// import { actions as messagesActions } from './messages';
+import { actions as userActions } from './user';
 // import { actions as errorMessageActions } from './errorMessage';
 
 const userAuthenticatingState = createSlice({
@@ -34,7 +34,7 @@ const authenticateUser = (data, resetFn, redirectFn) => async (dispatch) => {
     const response = await axios.post(routes.authenticatePath(), data);
     const user = get(response, 'data.response');
 
-    console.log('user:', user);
+    dispatch(userActions.fetchUser({ user }));
 
     dispatch(authenticateUserSuccess());
 
