@@ -1,0 +1,13 @@
+.Header {
+  height: 60px;
+}
+
+.Header__logo {
+  width: 130px;
+  height: 46px;
+}
+
+.Header__logo img {
+  max-width: 100%;
+  max-height: 100%;
+}
