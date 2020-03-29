@@ -1,27 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import { Field, Form, Formik } from 'formik';
 import { v4 as uuidv4 } from 'uuid';
 import FormInput from '../FormInput/index';
 import './index.css';
 import { required } from '../../../utils';
 import i18n from '../../../i18n';
+import connect from '../../../connect';
+import { getSelector } from '../../../redux/slices';
 
-const LoginForm = () => {
-
+const LoginForm = ({ authenticateUser }) => {
+  const userAuthenticatingState = useSelector(getSelector('userAuthenticatingState'));
 
   return (
     <div className="LoginForm">
       <Formik
-        initialValues={{ name: '', password: '' }}
-        onSubmit={(values) => {
-          console.log('values:', values);
+        initialValues={{ username: '', password: '' }}
+        onSubmit={(values, { resetForm }) => {
+          authenticateUser(values, resetForm);
         }}
       >
         <Form>
           <div className="form-group">
             <Field
-              name="name"
+              name="username"
               validate={required}
             >
               {({
@@ -43,6 +46,7 @@ const LoginForm = () => {
                   onBlur={onBlur}
                   touched={touched}
                   error={error}
+                  disabled={userAuthenticatingState.isRequested()}
                 />
               )}
             </Field>
@@ -72,12 +76,23 @@ const LoginForm = () => {
                   onBlur={onBlur}
                   touched={touched}
                   error={error}
+                  disabled={userAuthenticatingState.isRequested()}
                 />
               )}
             </Field>
           </div>
 
-          <button type="submit" className="btn btn-primary">{i18n.t('loginForm.submitButtonText')}</button>
+          <button
+            type="submit"
+            className="btn btn-primary"
+            disabled={userAuthenticatingState.isRequested()}
+          >
+            {userAuthenticatingState.isRequested() && (
+              <span className="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true" />
+            )}
+
+            {i18n.t('loginForm.submitButtonText')}
+          </button>
         </Form>
       </Formik>
     </div>
@@ -85,7 +100,7 @@ const LoginForm = () => {
 };
 
 LoginForm.propTypes = {
-
+  authenticateUser: PropTypes.func.isRequired,
 };
 
-export default LoginForm;
+export default connect()(LoginForm);

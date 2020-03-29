@@ -13,6 +13,7 @@ const FormInput = ({
   onBlur,
   touched,
   error,
+  disabled,
 }) => {
   const isInvalid = touched && !!error;
   const isValid = touched && !error;
@@ -36,6 +37,7 @@ const FormInput = ({
         value={value}
         onChange={onChange}
         onBlur={onBlur}
+        disabled={disabled}
       />
 
       {isInvalid && (<div className="invalid-feedback">{error}</div>)}
@@ -53,6 +55,7 @@ FormInput.propTypes = {
   onChange: PropTypes.func.isRequired,
   onBlur: PropTypes.func.isRequired,
   touched: PropTypes.bool.isRequired,
+  disabled: PropTypes.bool.isRequired,
   error: PropTypes.string,
 };
 
