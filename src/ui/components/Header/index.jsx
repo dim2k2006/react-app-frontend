@@ -3,8 +3,9 @@ import { useSelector } from 'react-redux';
 import './index.css';
 import logo from '../../assets/images/logo.svg';
 import { getSelector } from '../../../redux/slices';
+import connect from '../../../connect';
 
-const Header = () => {
+const Header = ({ terminateUser }) => {
   const userAuthenticatingState = useSelector(getSelector('userAuthenticatingState'));
 
   return (
@@ -12,7 +13,12 @@ const Header = () => {
       <div className="Header__container position-fixed w-100 d-flex align-items-center justify-content-center bg-primary">
         {userAuthenticatingState.isFinished() && (
           <div className="Header__btn position-absolute">
-            <button type="button" className="close Header__close p-2" data-dismiss="modal" aria-label="Close">
+            <button
+              type="button"
+              className="close Header__close p-2"
+              aria-label="Log out"
+              onClick={terminateUser}
+            >
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
@@ -26,4 +32,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default connect()(Header);
