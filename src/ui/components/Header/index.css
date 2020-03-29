@@ -1,5 +1,10 @@
 .Header {
   height: 60px;
+  z-index: 100;
+}
+
+.Header__container {
+  height: 60px;
 }
 
 .Header__logo {
