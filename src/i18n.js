@@ -13,8 +13,16 @@ i18next.init({
           invalidCredentials: 'Invalid username or password',
         },
 
+        detailsForm: {
+          title: 'Share your details',
+          emailFieldLabel: 'Email',
+          phoneFieldLabel: 'Phone',
+          submitButtonText: 'Continue',
+        },
+
         validations: {
           required: 'Required',
+          email: 'Invalid email',
         },
 
         serverErrors: {
