@@ -21,6 +21,11 @@ i18next.init({
           submitButtonText: 'Continue',
         },
 
+        termsForm: {
+          title: 'Terms and Conditions',
+          submitButtonText: 'Accept',
+        },
+
         validations: {
           required: 'Required',
           email: 'Invalid email',

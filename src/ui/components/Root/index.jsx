@@ -7,6 +7,7 @@ import {
 import PrivateRoute from '../PrivateRoute';
 import Login from '../../pages/Login';
 import Details from '../../pages/Details';
+import Terms from '../../pages/Terms';
 
 const Root = () => (
   <Router>
@@ -17,6 +18,10 @@ const Root = () => (
 
       <PrivateRoute path="/details">
         <Details />
+      </PrivateRoute>
+
+      <PrivateRoute path="/terms">
+        <Terms />
       </PrivateRoute>
     </Switch>
   </Router>
