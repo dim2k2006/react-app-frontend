@@ -27,19 +27,20 @@ const {
   authenticateUserFailure,
 } = userAuthenticatingState.actions;
 
-const authenticateUser = (data, resetFn) => async (dispatch) => {
+const authenticateUser = (data, resetFn, redirectFn) => async (dispatch) => {
   dispatch(authenticateUserRequest());
 
   try {
     const response = await axios.post(routes.authenticatePath(), data);
+    const user = get(response, 'data.response');
 
-    console.log('response:', response);
-
-    const message = get(response, 'data.data.attributes');
+    console.log('user:', user);
 
     dispatch(authenticateUserSuccess());
 
     resetFn();
+
+    redirectFn();
   } catch (e) {
     dispatch(authenticateUserFailure());
 

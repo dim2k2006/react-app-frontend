@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { Field, Form, Formik } from 'formik';
 import { v4 as uuidv4 } from 'uuid';
+import { useHistory } from 'react-router-dom';
 import FormInput from '../FormInput/index';
 import './index.css';
 import { required } from '../../../utils';
@@ -12,13 +13,15 @@ import { getSelector } from '../../../redux/slices';
 
 const LoginForm = ({ authenticateUser }) => {
   const userAuthenticatingState = useSelector(getSelector('userAuthenticatingState'));
+  const history = useHistory();
+  const redirect = () => history.replace('/profile');
 
   return (
     <div className="LoginForm">
       <Formik
         initialValues={{ username: '', password: '' }}
         onSubmit={(values, { resetForm }) => {
-          authenticateUser(values, resetForm);
+          authenticateUser(values, resetForm, redirect);
         }}
       >
         <Form>
