@@ -47,11 +47,11 @@ const entryMap = [
     process: () => '/details',
   },
   {
-    checker: (mail, acceptTerms) => acceptTerms === false,
+    checker: (mail, acceptTerms) => !!acceptTerms === false,
     process: () => '/terms',
   },
   {
-    checker: (mail, acceptTerms) => !!mail && acceptTerms,
+    checker: (mail, acceptTerms) => !!mail && !!acceptTerms,
     process: () => '/welcome',
   },
 ];
