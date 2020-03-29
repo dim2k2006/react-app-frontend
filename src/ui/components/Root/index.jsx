@@ -1,16 +1,19 @@
 import React from 'react';
-import { Provider } from 'react-redux';
-import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Redirect,
 } from 'react-router-dom';
 import Login from '../../pages/Login';
 import Profile from '../../pages/Profile';
+import { getSelector } from '../../../redux/slices';
 
-const Root = ({ store }) => (
-  <Provider store={store}>
+const Root = () => {
+  const userAuthenticatingState = useSelector(getSelector('userAuthenticatingState'));
+
+  return (
     <Router>
       <Switch>
         <Route exact path="/">
@@ -18,19 +21,17 @@ const Root = ({ store }) => (
         </Route>
 
         <Route path="/profile">
-          <Profile />
+          {!userAuthenticatingState.isFinished() && (
+            <Redirect to="/" />
+          )}
+
+          {userAuthenticatingState.isFinished() && (
+            <Profile />
+          )}
         </Route>
       </Switch>
     </Router>
-  </Provider>
-);
-
-Root.propTypes = {
-  store: PropTypes.shape({
-    subscribe: PropTypes.func.isRequired,
-    dispatch: PropTypes.func.isRequired,
-    getState: PropTypes.func.isRequired,
-  }).isRequired,
+  );
 };
 
 export default Root;
