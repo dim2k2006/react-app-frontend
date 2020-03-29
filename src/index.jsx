@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import 'normalize.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -12,6 +13,8 @@ const store = configureStore({
 });
 
 ReactDOM.render(
-  <Root store={store} />,
+  <Provider store={store}>
+    <Root />
+  </Provider>,
   document.getElementById('root'),
 );
