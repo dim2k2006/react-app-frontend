@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Header from '../Header/index';
+import ErrorMessage from '../ErrorMessage';
 
 const Layout = ({ children }) => (
   <>
@@ -9,6 +10,8 @@ const Layout = ({ children }) => (
     <main>
       {children}
     </main>
+
+    <ErrorMessage />
   </>
 );
 

@@ -19,6 +19,10 @@ i18next.init({
         validations: {
           required: 'Required',
         },
+
+        serverErrors: {
+          authenticateUser: 'Something went wrong during authenticating. Please try again.',
+        },
       },
     },
   },

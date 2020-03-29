@@ -3,7 +3,7 @@ import axios from 'axios';
 import get from 'lodash/get';
 import routes from '../../routes';
 import { actions as userActions } from './user';
-// import { actions as errorMessageActions } from './errorMessage';
+import { actions as errorMessageActions } from './errorMessage';
 
 const userAuthenticatingState = createSlice({
   name: 'userAuthenticatingState',
@@ -18,6 +18,9 @@ const userAuthenticatingState = createSlice({
     authenticateUserSuccess() {
       return 'finished';
     },
+    authenticateUserReset() {
+      return 'none';
+    },
   },
 });
 
@@ -25,6 +28,7 @@ const {
   authenticateUserRequest,
   authenticateUserSuccess,
   authenticateUserFailure,
+  authenticateUserReset,
 } = userAuthenticatingState.actions;
 
 const authenticateUser = (data, resetFn, redirectFn) => async (dispatch) => {
@@ -41,10 +45,18 @@ const authenticateUser = (data, resetFn, redirectFn) => async (dispatch) => {
     resetFn();
 
     redirectFn();
-  } catch (e) {
-    dispatch(authenticateUserFailure());
+  } catch (error) {
+    const status = get(error, 'response.status', 500);
 
-    // dispatch(errorMessageActions.showError({ message: 'SUBMIT_MESSAGE' }));
+    if (status === 500) {
+      dispatch(errorMessageActions.showError({ message: 'serverErrors.authenticateUser' }));
+
+      dispatch(authenticateUserReset());
+
+      return;
+    }
+
+    dispatch(authenticateUserFailure());
   }
 };
 
