@@ -32,7 +32,6 @@ const DetailsForm = ({ refreshUser }) => {
           email: '',
           phone: '',
           acceptMarketing: false,
-          showEmailPhoneScreen: false,
         }}
         onSubmit={(values, { resetForm }) => {
           refreshUser(values, resetForm, redirect);

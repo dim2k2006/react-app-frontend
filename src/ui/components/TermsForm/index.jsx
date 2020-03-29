@@ -20,7 +20,6 @@ const TermsForm = ({ refreshUser }) => {
         initialValues={{
           id: userId,
           acceptTerms: true,
-          showTermsAndCondition: false,
         }}
         onSubmit={(values, { resetForm }) => {
           refreshUser(values, resetForm, redirect);
