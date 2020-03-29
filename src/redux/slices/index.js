@@ -5,7 +5,6 @@ import userUpdatingState, { actions as userUpdatingStateActions, getUserUpdating
 import user, {
   actions as userActions,
   getUserId,
-  getUserEntryPoint,
 } from './user';
 
 import errorMessage, { actions as errorMessageActions, getErrorMessage } from './errorMessage';
@@ -30,7 +29,6 @@ const selectors = {
   userAuthenticatingState: getUserAuthenticatingState,
   userUpdatingState: getUserUpdatingState,
   userId: getUserId,
-  userEntryPoint: getUserEntryPoint,
   errorMessage: getErrorMessage,
 };
 

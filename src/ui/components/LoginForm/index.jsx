@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { useHistory } from 'react-router-dom';
 import FormInput from '../FormInput/index';
 import './index.css';
-import { required } from '../../../utils';
+import { required, redirect } from '../../../utils';
 import i18n from '../../../i18n';
 import connect from '../../../connect';
 import { getSelector } from '../../../redux/slices';
@@ -14,7 +14,7 @@ import { getSelector } from '../../../redux/slices';
 const LoginForm = ({ authenticateUser }) => {
   const userAuthenticatingState = useSelector(getSelector('userAuthenticatingState'));
   const history = useHistory();
-  const redirect = () => history.replace('/details');
+  const redirectFn = redirect(history);
 
   return (
     <div className="LoginForm">
@@ -31,7 +31,7 @@ const LoginForm = ({ authenticateUser }) => {
       <Formik
         initialValues={{ username: '', password: '' }}
         onSubmit={(values, { resetForm }) => {
-          authenticateUser(values, resetForm, redirect);
+          authenticateUser(values, resetForm, redirectFn);
         }}
       >
         <Form>
