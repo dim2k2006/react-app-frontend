@@ -16,6 +16,7 @@ const validateEmail = (value) => composedFieldValidation(value, [required, email
 
 const DetailsForm = ({ updateUser }) => {
   const userUpdatingState = useSelector(getSelector('userUpdatingState'));
+  const userId = useSelector(getSelector('userId'));
   const history = useHistory();
   const redirect = () => history.replace('/terms');
 
@@ -26,7 +27,12 @@ const DetailsForm = ({ updateUser }) => {
       </h3>
 
       <Formik
-        initialValues={{ email: '', phone: '', acceptMarketing: false }}
+        initialValues={{
+          id: userId,
+          email: '',
+          phone: '',
+          acceptMarketing: false,
+        }}
         onSubmit={(values, { resetForm }) => {
           updateUser(values, resetForm, redirect);
         }}
