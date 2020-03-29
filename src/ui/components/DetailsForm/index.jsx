@@ -8,6 +8,7 @@ import connect from '../../../connect';
 import i18n from '../../../i18n';
 import { required, email, composedFieldValidation } from '../../../utils';
 import FormInput from '../FormInput';
+import FormCheckbox from '../FormCheckbox';
 import './index.css';
 import { getSelector } from '../../../redux/slices';
 
@@ -25,7 +26,7 @@ const DetailsForm = ({ updateUser }) => {
       </h3>
 
       <Formik
-        initialValues={{ email: '', phone: '' }}
+        initialValues={{ email: '', phone: '', acceptMarketing: false }}
         onSubmit={(values, { resetForm }) => {
           updateUser(values, resetForm, redirect);
         }}
@@ -92,7 +93,32 @@ const DetailsForm = ({ updateUser }) => {
           </div>
 
           <div className="form-group">
-            Marketing checkbox
+            <Field
+              name="acceptMarketing"
+              type="checkbox"
+            >
+              {({
+                field: {
+                  name,
+                  checked,
+                  onChange,
+                  onBlur,
+                },
+                meta: { touched, error },
+              }) => (
+                <FormCheckbox
+                  id={uuidv4()}
+                  label={i18n.t('detailsForm.subscriptionFieldLabel')}
+                  name={name}
+                  checked={checked}
+                  onChange={onChange}
+                  onBlur={onBlur}
+                  touched={touched}
+                  error={error}
+                  disabled={userUpdatingState.isRequested()}
+                />
+              )}
+            </Field>
           </div>
 
           <button

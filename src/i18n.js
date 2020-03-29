@@ -17,6 +17,7 @@ i18next.init({
           title: 'Share your details',
           emailFieldLabel: 'Email',
           phoneFieldLabel: 'Phone',
+          subscriptionFieldLabel: 'I do not want to receive marketing material',
           submitButtonText: 'Continue',
         },
 
