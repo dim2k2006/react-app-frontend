@@ -26,6 +26,13 @@ i18next.init({
           submitButtonText: 'Accept',
         },
 
+        welcomeForm: {
+          title: 'Hello, welcome back!',
+          subtitle: 'It is nice to see you again!',
+          label: 'Your current balance is:',
+          submitButtonText: 'continue',
+        },
+
         validations: {
           required: 'Required',
           email: 'Invalid email',
