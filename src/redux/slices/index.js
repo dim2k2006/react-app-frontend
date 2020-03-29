@@ -2,7 +2,13 @@ import { combineReducers } from '@reduxjs/toolkit';
 
 import userAuthenticatingState, { actions as userAuthenticatingStateActions, getUserAuthenticatingState } from './userAuthenticatingState';
 import userUpdatingState, { actions as userUpdatingStateActions, getUserUpdatingState } from './userUpdatingState';
-import user, { actions as userActions, getUserId } from './user';
+import user, {
+  actions as userActions,
+  getUserId,
+  getUserShowEmailPhoneScreen,
+  getShowTermsAndCondition,
+  getShowWelcomeScreen,
+} from './user';
 
 import errorMessage, { actions as errorMessageActions, getErrorMessage } from './errorMessage';
 
@@ -26,6 +32,9 @@ const selectors = {
   userAuthenticatingState: getUserAuthenticatingState,
   userUpdatingState: getUserUpdatingState,
   userId: getUserId,
+  userShowEmailPhoneScreen: getUserShowEmailPhoneScreen,
+  userShowTermsAndCondition: getShowTermsAndCondition,
+  userShowWelcomeScreen: getShowWelcomeScreen,
   errorMessage: getErrorMessage,
 };
 

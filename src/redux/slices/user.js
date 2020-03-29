@@ -20,4 +20,10 @@ export { actions };
 
 export const getUserId = (state) => get(state, 'user.id');
 
+export const getUserShowEmailPhoneScreen = (state) => get(state, 'user.showEmailPhoneScreen');
+
+export const getShowTermsAndCondition = (state) => get(state, 'user.showTermsAndCondition');
+
+export const getShowWelcomeScreen = (state) => get(state, 'user.showWelcomeScreen');
+
 export default user.reducer;
