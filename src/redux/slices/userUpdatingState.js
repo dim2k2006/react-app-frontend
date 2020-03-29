@@ -28,17 +28,16 @@ const {
   updateUserRequest,
   updateUserSuccess,
   updateUserFailure,
-  updateUserReset,
 } = userUpdatingState.actions;
 
 const updateUser = (data, resetFn, redirectFn) => async (dispatch) => {
   dispatch(updateUserRequest());
 
   try {
-    // const response = await axios.post(routes.authenticatePath(), data);
-    // const user = get(response, 'data.response');
+    const response = await axios.post(routes.updateUserPath(), data);
+    const user = get(response, 'data.response');
 
-    // dispatch(userActions.fetchUser({ user }));
+    dispatch(userActions.updateUser({ user }));
 
     dispatch(updateUserSuccess());
 
@@ -46,17 +45,9 @@ const updateUser = (data, resetFn, redirectFn) => async (dispatch) => {
 
     redirectFn();
   } catch (error) {
-    const status = get(error, 'response.status', 500);
-
-    if (status === 500) {
-      dispatch(errorMessageActions.showError({ message: 'serverErrors.authenticateUser' }));
-
-      dispatch(updateUserReset());
-
-      return;
-    }
-
     dispatch(updateUserFailure());
+
+    dispatch(errorMessageActions.showError({ message: 'serverErrors.updateUser' }));
   }
 };
 
