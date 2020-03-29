@@ -24,7 +24,7 @@ const ErrorMessage = ({ hideError }) => {
         <div className={componentClass} role="alert">
           {i18n.t(key)}
 
-          <button type="button" className="close" data-dismiss="alert" aria-label="Close" onClick={hideError}>
+          <button type="button" className="close" data-dismiss="alert" aria-label="Close" onClick={() => hideError()}>
             <span aria-hidden="true">&times;</span>
           </button>
         </div>

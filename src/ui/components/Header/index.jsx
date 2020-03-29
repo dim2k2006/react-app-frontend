@@ -7,6 +7,8 @@ import connect from '../../../connect';
 
 const Header = ({ terminateUser }) => {
   const userAuthenticatingState = useSelector(getSelector('userAuthenticatingState'));
+  const userId = useSelector(getSelector('userId'));
+  const logout = () => terminateUser({ id: userId });
 
   return (
     <header className="Header position-relative w-100">
@@ -17,7 +19,7 @@ const Header = ({ terminateUser }) => {
               type="button"
               className="close Header__close p-2"
               aria-label="Log out"
-              onClick={terminateUser}
+              onClick={logout}
             >
               <span aria-hidden="true">&times;</span>
             </button>
