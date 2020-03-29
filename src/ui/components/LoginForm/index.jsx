@@ -14,7 +14,7 @@ import { getSelector } from '../../../redux/slices';
 const LoginForm = ({ authenticateUser }) => {
   const userAuthenticatingState = useSelector(getSelector('userAuthenticatingState'));
   const history = useHistory();
-  const redirect = () => history.replace('/profile');
+  const redirect = () => history.replace('/details');
 
   return (
     <div className="LoginForm">
