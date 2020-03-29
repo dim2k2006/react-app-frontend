@@ -5,9 +5,7 @@ import userUpdatingState, { actions as userUpdatingStateActions, getUserUpdating
 import user, {
   actions as userActions,
   getUserId,
-  getUserShowEmailPhoneScreen,
-  getShowTermsAndCondition,
-  getShowWelcomeScreen,
+  getUserEntryPoint,
 } from './user';
 
 import errorMessage, { actions as errorMessageActions, getErrorMessage } from './errorMessage';
@@ -32,9 +30,7 @@ const selectors = {
   userAuthenticatingState: getUserAuthenticatingState,
   userUpdatingState: getUserUpdatingState,
   userId: getUserId,
-  userShowEmailPhoneScreen: getUserShowEmailPhoneScreen,
-  userShowTermsAndCondition: getShowTermsAndCondition,
-  userShowWelcomeScreen: getShowWelcomeScreen,
+  userEntryPoint: getUserEntryPoint,
   errorMessage: getErrorMessage,
 };
 

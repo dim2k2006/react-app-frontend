@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import get from 'lodash/get';
+import find from 'lodash/find';
 
 const user = createSlice({
   name: 'user',
@@ -20,10 +21,29 @@ export { actions };
 
 export const getUserId = (state) => get(state, 'user.id');
 
-export const getUserShowEmailPhoneScreen = (state) => get(state, 'user.showEmailPhoneScreen');
+const entryMap = [
+  {
+    checker: (email) => !!email === false,
+    process: () => '/details',
+  },
+  {
+    checker: (email, acceptTerms) => acceptTerms === false,
+    process: () => '/terms',
+  },
+  {
+    checker: (email, acceptTerms) => !!email && acceptTerms,
+    process: () => '/welcome',
+  },
+];
 
-export const getShowTermsAndCondition = (state) => get(state, 'user.showTermsAndCondition');
+export const getUserEntryPoint = (state) => {
+  const email = get(state, 'user.email');
+  const acceptTerms = get(state, 'user.acceptTerms');
+  const entryItem = find(entryMap, (item) => item.checker(email, acceptTerms));
+  const process = get(entryItem, 'process');
+  const entryPoint = process();
 
-export const getShowWelcomeScreen = (state) => get(state, 'user.showWelcomeScreen');
+  return entryPoint;
+};
 
 export default user.reducer;
