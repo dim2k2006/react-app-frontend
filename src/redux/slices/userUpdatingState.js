@@ -34,7 +34,7 @@ const refreshUser = (data, resetFn, redirectFn) => async (dispatch) => {
   dispatch(updateUserRequest());
 
   try {
-    const response = await axios.post(routes.updateUserPath(), data);
+    const response = await axios.put(routes.updateUserPath(), data);
     const user = get(response, 'data.response');
 
     dispatch(userActions.updateUser({ user }));
