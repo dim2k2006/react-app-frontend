@@ -35,7 +35,7 @@ const authenticateUser = (data, resetFn, redirectFn) => async (dispatch) => {
   dispatch(authenticateUserRequest());
 
   try {
-    const response = await axios.post(routes.authenticatePath(), data);
+    const response = await axios.post(routes.authenticateUserPath(), data);
     const user = get(response, 'data.response');
 
     dispatch(userActions.fetchUser({ user }));
