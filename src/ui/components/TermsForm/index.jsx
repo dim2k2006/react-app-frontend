@@ -6,13 +6,14 @@ import { Form, Formik } from 'formik';
 import { getSelector } from '../../../redux/slices';
 import i18n from '../../../i18n';
 import connect from '../../../connect';
+import { redirect } from '../../../utils';
 import './index.css';
 
 const TermsForm = ({ refreshUser }) => {
   const userUpdatingState = useSelector(getSelector('userUpdatingState'));
   const userId = useSelector(getSelector('userId'));
   const history = useHistory();
-  const redirect = () => history.replace('/welcome');
+  const redirectFn = redirect(history);
 
   return (
     <div className="TermsForm">
@@ -22,7 +23,7 @@ const TermsForm = ({ refreshUser }) => {
           acceptTerms: true,
         }}
         onSubmit={(values, { resetForm }) => {
-          refreshUser(values, resetForm, redirect);
+          refreshUser(values, resetForm, redirectFn);
         }}
       >
         <Form>
