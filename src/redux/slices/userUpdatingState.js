@@ -39,11 +39,11 @@ const refreshUser = (data, resetFn, redirectFn) => async (dispatch) => {
     const user = get(response, 'data.response');
     const entryPoint = getUserEntryPoint(user);
 
+    resetFn();
+
     dispatch(userActions.updateUser({ user }));
 
     dispatch(updateUserSuccess());
-
-    resetFn();
 
     redirectFn(entryPoint);
   } catch (error) {
