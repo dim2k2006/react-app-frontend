@@ -1,9 +1,10 @@
-const host = 'https://comeon-backend.herokuapp.com';
+const apiHost = 'https://comeon-backend.herokuapp.com';
+const host = '';
 
 export default {
-  authenticateUserPath: () => [host, 'authenticate'].join('/'),
-  updateUserPath: () => [host, 'player'].join('/'),
-  terminateUserPath: () => [host, 'logout'].join('/'),
+  authenticateUserPath: () => [apiHost, 'authenticate'].join('/'),
+  updateUserPath: () => [apiHost, 'player'].join('/'),
+  terminateUserPath: () => [apiHost, 'logout'].join('/'),
 
-  loginPage: () => ['login'].join('/') // /login
+  loginPage: () => [host, 'login'].join('/'),
 };

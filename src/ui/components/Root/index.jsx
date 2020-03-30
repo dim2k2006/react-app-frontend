@@ -10,11 +10,12 @@ import Details from '../../pages/Details';
 import Terms from '../../pages/Terms';
 import Welcome from '../../pages/Welcome';
 import Home from '../../pages/Home';
+import routes from '../../../routes';
 
 const Root = () => (
   <Router>
     <Switch>
-      <Route exact path="/login">
+      <Route exact path={routes.loginPage()}>
         <Login />
       </Route>
 
