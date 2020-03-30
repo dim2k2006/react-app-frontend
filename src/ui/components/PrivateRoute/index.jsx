@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getSelector } from '../../../redux/slices';
+import routes from '../../../routes';
 
 const PrivateRoute = ({ children, ...rest }) => {
   const userAuthenticatingState = useSelector(getSelector('userAuthenticatingState'));
@@ -18,7 +19,7 @@ const PrivateRoute = ({ children, ...rest }) => {
           : (
             <Redirect
               to={{
-                pathname: '/login',
+                pathname: routes.loginPage(),
                 state: { from: location },
               }}
             />
