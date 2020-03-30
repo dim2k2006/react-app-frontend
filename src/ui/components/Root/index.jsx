@@ -5,6 +5,8 @@ import {
   Route,
 } from 'react-router-dom';
 import PrivateRoute from '../PrivateRoute';
+import FlowRoute from '../FlowRoute';
+import AppRoute from '../AppRoute';
 import Login from '../../pages/Login';
 import Details from '../../pages/Details';
 import Terms from '../../pages/Terms';
@@ -20,19 +22,27 @@ const Root = () => (
       </Route>
 
       <PrivateRoute path={routes.detailsPage()}>
-        <Details />
+        <FlowRoute fallback={routes.welcomePage()}>
+          <Details />
+        </FlowRoute>
       </PrivateRoute>
 
       <PrivateRoute path={routes.termsPage()}>
-        <Terms />
+        <FlowRoute fallback={routes.welcomePage()}>
+          <Terms />
+        </FlowRoute>
       </PrivateRoute>
 
       <PrivateRoute path={routes.welcomePage()}>
-        <Welcome />
+        <AppRoute>
+          <Welcome />
+        </AppRoute>
       </PrivateRoute>
 
       <PrivateRoute path={routes.rootPage()}>
-        <Home />
+        <AppRoute>
+          <Home />
+        </AppRoute>
       </PrivateRoute>
     </Switch>
   </Router>
