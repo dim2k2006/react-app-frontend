@@ -6,6 +6,8 @@ import userTerminatingState, { actions as userTerminatingStateActions } from './
 import user, {
   actions as userActions,
   getUserId,
+  getUserStatus,
+  getUserEntryPoint,
 } from './user';
 
 import errorMessage, { actions as errorMessageActions, getErrorMessage } from './errorMessage';
@@ -32,6 +34,8 @@ const selectors = {
   userAuthenticatingState: getUserAuthenticatingState,
   userUpdatingState: getUserUpdatingState,
   userId: getUserId,
+  userStatus: getUserStatus,
+  userEntryPoint: getUserEntryPoint,
   errorMessage: getErrorMessage,
 };
 
