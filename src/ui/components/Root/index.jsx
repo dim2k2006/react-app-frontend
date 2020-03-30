@@ -19,19 +19,19 @@ const Root = () => (
         <Login />
       </Route>
 
-      <PrivateRoute path="/details">
+      <PrivateRoute path={routes.detailsPage()}>
         <Details />
       </PrivateRoute>
 
-      <PrivateRoute path="/terms">
+      <PrivateRoute path={routes.termsPage()}>
         <Terms />
       </PrivateRoute>
 
-      <PrivateRoute path="/welcome">
+      <PrivateRoute path={routes.welcomePage()}>
         <Welcome />
       </PrivateRoute>
 
-      <PrivateRoute path="/">
+      <PrivateRoute path={routes.rootPage()}>
         <Home />
       </PrivateRoute>
     </Switch>

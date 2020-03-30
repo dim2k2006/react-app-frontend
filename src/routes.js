@@ -7,4 +7,8 @@ export default {
   terminateUserPath: () => [apiHost, 'logout'].join('/'),
 
   loginPage: () => [host, 'login'].join('/'),
+  detailsPage: () => [host, 'details'].join('/'),
+  termsPage: () => [host, 'terms'].join('/'),
+  welcomePage: () => [host, 'welcome'].join('/'),
+  rootPage: () => [host, ''].join('/'),
 };

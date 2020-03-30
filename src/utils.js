@@ -4,6 +4,7 @@ import tail from 'lodash/tail';
 import get from 'lodash/get';
 import find from 'lodash/find';
 import i18n from './i18n';
+import routes from './routes';
 
 export const required = (value) => (value || typeof value === 'number' ? undefined : i18n.t('validations.required'));
 
@@ -44,15 +45,15 @@ export const saveState = (state) => {
 const entryMap = [
   {
     checker: (mail) => !!mail === false,
-    process: () => '/details',
+    process: () => routes.detailsPage(),
   },
   {
     checker: (mail, acceptTerms) => !!acceptTerms === false,
-    process: () => '/terms',
+    process: () => routes.termsPage(),
   },
   {
     checker: (mail, acceptTerms) => !!mail && !!acceptTerms,
-    process: () => '/welcome',
+    process: () => routes.welcomePage(),
   },
 ];
 
