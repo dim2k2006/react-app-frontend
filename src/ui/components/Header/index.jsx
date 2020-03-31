@@ -1,9 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import './index.css';
-import logo from '../../assets/images/logo.svg';
 import { getSelector } from '../../../redux/slices';
 import connect from '../../../connect';
+import Logo from '../Logo';
 
 const Header = ({ terminateUser }) => {
   const userAuthenticatingState = useSelector(getSelector('userAuthenticatingState'));
@@ -27,7 +27,7 @@ const Header = ({ terminateUser }) => {
         )}
 
         <div className="Header__logo">
-          <img src={logo} alt="Fast banana" />
+          <Logo />
         </div>
       </div>
     </header>

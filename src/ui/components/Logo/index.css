@@ -1,0 +1,9 @@
+.Logo {
+  width: 130px;
+  height: 46px;
+}
+
+.Logo svg {
+  max-width: 100%;
+  max-height: 100%;
+}
